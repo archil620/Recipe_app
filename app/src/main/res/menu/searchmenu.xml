@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/addrecipe"
+        android:title="AddRecipe"
+        android:icon="@drawable/ic_add"
+        android:orderInCategory="100"
+        app:showAsAction="always"></item>
+
+    <item android:id="@+id/menuSearch"
+        android:title="Recipe"
+        android:icon="@drawable/ic_search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"></item>
+
+</menu>

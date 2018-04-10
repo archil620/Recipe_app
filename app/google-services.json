@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "637131637608",
+    "firebase_url": "https://recipeapp-a0410.firebaseio.com",
+    "project_id": "recipeapp-a0410",
+    "storage_bucket": "recipeapp-a0410.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637131637608:android:843f37fcf1297fb5",
+        "android_client_info": {
+          "package_name": "due2do.mobile.com.recipe_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637131637608-et71s5jv0avn39lejs1m9p57t52719bn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "due2do.mobile.com.recipe_app",
+            "certificate_hash": "c006a53bf8a0759d0cb18912dc60c03090638eb1"
+          }
+        },
+        {
+          "client_id": "637131637608-egs1scl9n8dggj1bvpqqt60e2dfaa6os.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCxT9H4-kAZxQwX9lGQVafb9H-FG6zouU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637131637608-egs1scl9n8dggj1bvpqqt60e2dfaa6os.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
