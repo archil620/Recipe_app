@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     FoodAdapter adapter;
     List<modelfood> modelfoodList = new ArrayList<>();
 
+
     private DatabaseReference mref;
     EditText recipe_name, recipe_type;
     //ImageView item_img;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv);
         recipe_name = findViewById(R.id.recipe_name);
         recipe_type = findViewById(R.id.recipe_type);
+
 
 
         mref = FirebaseDatabase.getInstance().getReference().child("food-receipe");
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     modelfood foodlist = ds.getValue(modelfood.class);
+                    foodlist.setKey(ds.getKey());
                     modelfoodList.add(foodlist);
                 }
 

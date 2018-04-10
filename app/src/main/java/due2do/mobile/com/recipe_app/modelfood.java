@@ -1,13 +1,16 @@
 package due2do.mobile.com.recipe_app;
 
+import java.io.Serializable;
+
 /**
  * Created by Archil on 2018-04-06.
  */
 
-public class modelfood {
+public class modelfood implements Serializable {
 
     private int recipeimage;
-    private String recipe_name, recipe_type, description, ingrediants;
+    private String recipe_name, recipe_type, description, ingrediants,key;
+    private String imageUri;
 
     public modelfood(){
 
@@ -19,6 +22,22 @@ public class modelfood {
         this.recipe_type = recipe_type;
         this.description = description;
         this.ingrediants = ingrediants;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public int getRecipeimage() {

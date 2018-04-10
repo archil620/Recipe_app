@@ -9,14 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:scaleType="centerCrop"
-        android:id="@+id/recipe_pic"
-        android:src="@drawable/biriyani"/>
+        android:id="@+id/recipe_pic"/>
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recipe_pic">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,39 +20,104 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:id="@+id/recipe_name"
-
+            <!--<TextView
+                android:id="@+id/recipe_names"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@+id/recipe_pic"
                 android:layout_marginTop="3dp"
                 android:text="Recipe Name:"
-                android:textColor="#6e7b8b" />
+                android:textColor="#6e7b8b" />-->
 
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Recipe Name:"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/recipe_names"/>
+            </LinearLayout>
+
+
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/incre"
-                android:layout_marginBottom="@+id/description"
+                android:id="@+id/inced"
+                android:layout_marginBottom="@+id/recipe_names"
                 android:text="Ingredints:"
                 android:textColor="#6e7b8b" />
+-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Ingredints::"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:scrollbars="vertical"
+                    android:id="@+id/inced"/>
+            </LinearLayout>
 
 
 
-            <TextView
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/description"
-                android:layout_marginBottom="@+id/textView2"
+                android:id="@+id/descr"
+                android:layout_marginBottom="@+id/incre"
                 android:text="Description:"
-                android:textColor="#8b7b8b" />
+                android:textColor="#8b7b8b" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Description:"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1000dp"
+                    android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scrollbars = "vertical"
+                    android:id="@+id/descr"
+                    />
+            </LinearLayout>
 
 
 
 
         </LinearLayout>
 
-    </ScrollView>
+
 
 </LinearLayout>
