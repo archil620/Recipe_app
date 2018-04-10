@@ -14,10 +14,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,15 +30,13 @@ public class MainActivity extends AppCompatActivity {
     //Toolbar toolbar;
     RecyclerView recyclerView;
     Button addRecipe;
-
-    private ArrayList<String> mRecipenames;
+    modelfood foodlist = new modelfood();
+    FoodAdapter adapter;
+    List<modelfood> modelfoodList = new ArrayList<>();
 
     private DatabaseReference mref;
-
-
-
     EditText recipe_name, recipe_type;
-    ImageView item_img;
+    //ImageView item_img;
 
 
     @Override
@@ -44,25 +46,43 @@ public class MainActivity extends AppCompatActivity {
 
         //toolbar= findViewById(R.id.tool_bar);
         recyclerView = findViewById(R.id.rv);
-        recipe_name=findViewById(R.id.recipe_name);
-        recipe_type=findViewById(R.id.recipe_type);
-
-        mref= FirebaseDatabase.getInstance().getReference();
+        recipe_name = findViewById(R.id.recipe_name);
+        recipe_type = findViewById(R.id.recipe_type);
 
 
+        mref = FirebaseDatabase.getInstance().getReference().child("food-receipe");
+        recyclerView = (RecyclerView) findViewById(R.id.rv);
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                modelfoodList.clear();
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+                    modelfood foodlist = ds.getValue(modelfood.class);
+                    modelfoodList.add(foodlist);
+                }
 
 
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        RecyclerView.LayoutManager rvLiLayoutManager = layoutManager;
-        recyclerView.setLayoutManager(rvLiLayoutManager);
+                adapter = new FoodAdapter(MainActivity.this, modelfoodList);
+                recyclerView.setAdapter(adapter);
 
 
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
-
-
 
 
     @Override
