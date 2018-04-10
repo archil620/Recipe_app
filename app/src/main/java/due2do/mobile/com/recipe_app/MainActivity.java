@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mref;
     EditText recipe_name, recipe_type;
+    RatingBar rateit;
     //ImageView item_img;
 
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv);
         recipe_name = findViewById(R.id.recipe_name);
         recipe_type = findViewById(R.id.recipe_type);
+        rateit=findViewById(R.id.rating);
 
 
 

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +56,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
         holder.recipe_name.setText(foodlist.getRecipe_name());
         holder.recipe_type.setText(foodlist.getRecipe_type());
+        holder.rateit.setRating(foodlist.getRating());
+
 
        /* holder.linear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +84,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         //ImageView item_img;
         TextView recipe_name, recipe_type;
         ImageButton editrecipe,deleterecipe;
-        public LinearLayout linear;
+        RatingBar rateit;
 
 
         public ViewHolder(View itemView) {
@@ -92,7 +95,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             recipe_type = itemView.findViewById(R.id.recipe_type);
             editrecipe = itemView.findViewById(R.id.editrecipe);
             deleterecipe= itemView.findViewById(R.id.deleterecipe);
-            linear=(LinearLayout) itemView.findViewById(R.id.linear);
+            rateit= itemView.findViewById(R.id.rating);
             deleterecipe.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

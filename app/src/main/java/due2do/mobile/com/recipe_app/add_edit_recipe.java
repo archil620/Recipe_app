@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,6 +39,8 @@ public class add_edit_recipe extends AppCompatActivity {
     ImageView recipe_image;
     modelfood updade;
     private StorageReference mStorageRef;
+    RatingBar rateit;
+    TextView value;
 
 
 
@@ -54,6 +58,18 @@ public class add_edit_recipe extends AppCompatActivity {
         recipe_type = findViewById(R.id.recipe_type);
         description = findViewById(R.id.description);
         recipe_image = findViewById(R.id.item_img);
+        rateit=(RatingBar) findViewById(R.id.rating);
+        value=findViewById(R.id.value);
+
+        rateit.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                value.setText(""+rating);
+            }
+        });
+
+
+
 
        //Update method was implemented in our project, so i took the reference from it and implemented the same.
         updade= (modelfood) getIntent().getSerializableExtra("UpdateRecipe");
@@ -63,7 +79,7 @@ public class add_edit_recipe extends AppCompatActivity {
             recipe_type.setText(updade.getRecipe_type());
             ingrediants.setText(updade.getIngrediants());
             description.setText(updade.getDescription());
-
+            rateit.setRating(updade.getRating());
         }
 
 
@@ -88,6 +104,8 @@ public class add_edit_recipe extends AppCompatActivity {
             updade.setRecipe_type(String.valueOf(recipe_type.getText()));
             updade.setDescription(String.valueOf(description.getText()));
             updade.setIngrediants(String.valueOf(ingrediants.getText()));
+            updade.setRating((rateit.getRating()));
+
             databaseReference.child("food-receipe").child(updade.getKey()).setValue(updade);
 
         }else{
@@ -97,6 +115,8 @@ public class add_edit_recipe extends AppCompatActivity {
             modelfood.setRecipe_type(String.valueOf(recipe_type.getText()));
             modelfood.setIngrediants(String.valueOf(ingrediants.getText()));
             modelfood.setDescription(String.valueOf(description.getText()));
+            modelfood.setRating((rateit.getRating()));
+
 
 
             databaseReference.child("food-receipe").push().setValue(modelfood);

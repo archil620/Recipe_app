@@ -5,6 +5,79 @@
     android:orientation="vertical">
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Recipe Name:"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recipe_name"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Recipe type (Snack, DIsh, Drink):"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recipe_type"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Ingredients:"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/incre"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:maxLength="1000"
+                    android:scrollbars="vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Description:"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/description"
+                    android:inputType="textMultiLine"
+                    android:lines="50"
+                    android:maxLength="10000"
+                    android:scrollbars="vertical"/>
+            </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -12,105 +85,85 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Recipe Name:"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recipe_name"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Recipe type (Snack, DIsh, Drink):"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recipe_type"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Ingredients:"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/incre"
-            android:inputType="textMultiLine"
-            android:lines="8"
-            android:maxLength="1000"
-            android:scrollbars="vertical"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Description:"/>
-
-        <EditText
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/description"
-            android:inputType="textMultiLine"
-            android:lines="50"
-            android:maxLength="10000"
-            android:scrollbars="vertical"/>
-    </LinearLayout>
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="Rating:" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+
+        <RatingBar
+            android:id="@+id/rating"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:stepSize="1"
+            android:layout_gravity="center"
+            android:numStars="5" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Take Image:"/>
+            android:id="@+id/value"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/take_img"
-            android:background="@drawable/ic_camera"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:id="@+id/item_img"/>
     </LinearLayout>
+
 
     <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical">
 
-        <Button
-            android:id="@+id/addDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:text="Add Recipe"/>
-    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:text="Take Image:" />
+
+                        <Button
+                            android:id="@+id/take_img"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/ic_camera" />
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/item_img"/>
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/addDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="Add Recipe"/>
+            </LinearLayout>
 
 </LinearLayout>

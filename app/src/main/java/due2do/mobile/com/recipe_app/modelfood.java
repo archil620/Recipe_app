@@ -11,17 +11,29 @@ public class modelfood implements Serializable {
     private int recipeimage;
     private String recipe_name, recipe_type, description, ingrediants,key;
     private String imageUri;
+    Float rating;
 
     public modelfood(){
 
     }
 
-    public modelfood(int recipeimage, String recipe_name, String recipe_type, String description, String ingrediants) {
+    public modelfood(int recipeimage, String recipe_name, String recipe_type, String description, String ingrediants, String key, String imageUri, Float rating) {
         this.recipeimage = recipeimage;
         this.recipe_name = recipe_name;
         this.recipe_type = recipe_type;
         this.description = description;
         this.ingrediants = ingrediants;
+        this.key = key;
+        this.imageUri = imageUri;
+        this.rating = rating;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
     }
 
     public String getImageUri() {
