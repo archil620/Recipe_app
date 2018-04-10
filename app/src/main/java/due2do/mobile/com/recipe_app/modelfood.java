@@ -13,6 +13,7 @@ public class modelfood implements Serializable {
     private String imageUri;
     Float rating;
 
+
     public modelfood(){
 
     }

@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,9 +20,16 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +42,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     private Context mContext;
     private List<modelfood> modelfoodList = new ArrayList<>();
     private DatabaseReference databaseReference;
+    Bitmap cameraBitmap;
 
     public FoodAdapter(Context mContext, List<modelfood> list) {
         this.mContext = mContext;
@@ -49,10 +60,36 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+
+
 
         final modelfood foodlist = modelfoodList.get(position);
 
+        FirebaseStorage storage = FirebaseStorage.getInstance("gs://recipeapp-a0410.appspot.com/");
+        if (foodlist.getImageUri() != null) {
+            StorageReference ref = storage.getReferenceFromUrl(foodlist.getImageUri());
+
+            try {
+                final File file = File.createTempFile("Images", "JPG");
+                ref.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        cameraBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                        cameraBitmap = Bitmap.createScaledBitmap(cameraBitmap, 500, 500, false);
+                        holder.item_img.setImageBitmap(cameraBitmap);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
+            } catch (IOException e) {
+                Toast.makeText(mContext, "Some error occured! Please try again", Toast.LENGTH_SHORT).show();
+            }
+        }
 
         holder.recipe_name.setText(foodlist.getRecipe_name());
         holder.recipe_type.setText(foodlist.getRecipe_type());
@@ -85,6 +122,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         TextView recipe_name, recipe_type;
         ImageButton editrecipe,deleterecipe;
         RatingBar rateit;
+        ImageView item_img;
 
 
         public ViewHolder(View itemView) {
@@ -96,6 +134,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             editrecipe = itemView.findViewById(R.id.editrecipe);
             deleterecipe= itemView.findViewById(R.id.deleterecipe);
             rateit= itemView.findViewById(R.id.rating);
+            item_img = itemView.findViewById(R.id.item_img);
             deleterecipe.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -171,4 +210,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
 
     }
+
+    public void setFilter(List<modelfood> newList){
+        modelfoodList=new ArrayList<>();
+        modelfoodList.addAll(newList);
+        notifyDataSetChanged();
+    }
+
+
 }
