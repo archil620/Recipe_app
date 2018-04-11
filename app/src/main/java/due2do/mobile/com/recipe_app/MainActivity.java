@@ -12,7 +12,21 @@
 //For Search Function
 // [5]H. properly, "How to implement search in Recycler View properly", Stackoverflow.com, 2018. [Online]. Available: https://stackoverflow.com/questions/48105976/how-to-implement-search-in-recycler-view-properly. [Accessed: 10- Apr- 2018].
 
+//Action bar search
+//[6] 2/4 How to add buttons to action bar Android Studio,” YouTube, 27-Jul-2015. [Online]. Available: https://www.youtube.com/watch?v=5MSKuVO2hV4&t=155s. [Accessed: 02-Apr-2018].
+
+//Delete Dialog
+//[7] "Android confirmation message for delete", Stackoverflow.com, 2018. [Online]. Available: https://stackoverflow.com/questions/11740311/android-confirmation-message-for-delete. [Accessed: 10- Apr- 2018].
+
+//Taking image from camera
+//[8]Firebase, "Capturing Image from Camera and Upload to Firebase", Stackoverflow.com, 2018. [Online]. Available: https://stackoverflow.com/questions/41376328/capturing-image-from-camera-and-upload-to-firebase. [Accessed: 10- Apr- 2018].
+
+//Image on mainPage
+// [11]Assets1.blurb.com, 2018. [Online]. Available: http://assets1.blurb.com/pages/website-assets/kickstarter/cookbooks-8c2ba08eba8e84fbb523c7e1d909c681f6995c9248bb926eac169770fdca4bd0.jpg. [Accessed: 11- Apr- 2018].
+
 package due2do.mobile.com.recipe_app;
+
+
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -130,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, add_edit_recipe.class));
                 return true;
 
-            case R.id.menuSearch:
 
 
         }
